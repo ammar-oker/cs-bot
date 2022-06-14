@@ -1,26 +1,54 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Wizard from './containers/Wizard';
+import ChatBot from './containers/ChatBot';
+import {
+  Route,
+  Routes,
+  BrowserRouter,
+  Link as RouterLink,
+} from 'react-router-dom';
+import Toolbar from '@mui/material/Toolbar';
+import AppBar from '@mui/material/AppBar';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import Link from '@mui/material/Link';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <AppBar position="sticky" elevation={0}>
+        <Toolbar>
+          <Box flexGrow={1}>
+            <Link
+              color="inherit"
+              underline="none"
+              component={RouterLink}
+              to="/"
+            >
+              <Typography>Customer Service Bot</Typography>
+            </Link>
+          </Box>
+          <Button
+            endIcon={<SupportAgentIcon />}
+            component={RouterLink}
+            disableElevation
+            variant="outlined"
+            color="inherit"
+            to="/chat"
+          >
+            Start Conversation
+          </Button>
+        </Toolbar>
+      </AppBar>
+
+      <Routes>
+        <Route path="/chat" element={<ChatBot />} />
+        <Route path="/" element={<Wizard />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
