@@ -1,5 +1,7 @@
 # Customer Service Bot
 
+### The app is live on [cs-bot.vercel.app](https://cs-bot.vercel.app/)
+
 ## Tech Stack
 - MUI & @emotion/styled for styling
 - testing-library
